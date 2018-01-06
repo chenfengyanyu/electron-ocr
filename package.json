@@ -1,0 +1,27 @@
+{
+  "name": "electron-ocr",
+  "version": "1.0.0",
+  "description": "OCR(Optical Character Recognition), Electron, Tools",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenfengyanyu/electron-ocr.git"
+  },
+  "keywords": [
+    "electron",
+    "OCR"
+  ],
+  "author": "jartto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenfengyanyu/electron-ocr/issues"
+  },
+  "homepage": "https://github.com/chenfengyanyu/electron-ocr#readme",
+  "devDependencies": {
+    "electron": "^1.7.10"
+  }
+}
