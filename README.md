@@ -60,3 +60,6 @@ vi .babelrc 写入如下代码
 }
 ```
 通过 presets 和 plugins 两个子项，我们告知 babel 转换 ES6 和 React JSX 风格的代码，另外还需转换 ES6 中的 spread 语法。
+
+
+未完待续。。。
