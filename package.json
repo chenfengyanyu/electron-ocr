@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "watchify main.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "watch": "watchify app/appEntry.js -t babelify -o public/js/bundle.js --debug --verbose"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babelify": "^8.0.0",

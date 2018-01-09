@@ -24,7 +24,7 @@ function createWindow () {
   }))
 
   if (isDevelopment) {
-    mainWnd.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
 
   mainWindow.on('closed', function () {
