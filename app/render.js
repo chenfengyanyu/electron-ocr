@@ -15,6 +15,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import Block from './components/Block';
+
 let muiTheme = getMuiTheme({fontFamily: 'Microsoft YaHei'});
 
 class MainWindow extends React.Component {
@@ -33,8 +35,9 @@ class MainWindow extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.root}>
-          <img style={styles.icon} src='public/image/icon.png'/>
-
+          <img style={styles.icon} src='image/icon.png'/>
+          <Block />
+          
           <TextField
             hintText='请输入用户名'
             value={this.state.userName}

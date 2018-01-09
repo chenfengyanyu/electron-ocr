@@ -9,7 +9,8 @@ let isDevelopment = true;
 
 if (isDevelopment) {
   require('electron-reload')(__dirname, {
-      ignored: /node_modules|[\/\\]\./
+    electron: require('${__dirname}/../../node_modules/electron'),
+    ignored: /node_modules|[\/\\]\./
   });
 }
 
@@ -17,7 +18,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'public/index.html'),
     protocol: 'file:',
     slashes: true,
     icon: 'public/image/icon.png'

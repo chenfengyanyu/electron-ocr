@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "watchify app/appEntry.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "watch-css": "catw -c 'lessc --include-path=less/ less/main.less' 'less/*.less' -o static/css/style.css -v",
+    "watch": "watchify app/render.js -t babelify -o public/js/bundle.js --debug --verbose"
   },
   "repository": {
     "type": "git",
