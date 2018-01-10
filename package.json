@@ -2,12 +2,10 @@
   "name": "electron-ocr",
   "version": "1.0.0",
   "description": "OCR(Optical Character Recognition), Electron, Tools",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-css": "catw -c 'lessc --include-path=less/ less/main.less' 'less/*.less' -o static/css/style.css -v",
-    "watch": "watchify app/render.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -32,13 +30,14 @@
     "babel-preset-react": "^6.24.1",
     "babelify": "^8.0.0",
     "browserify": "^15.0.0",
-    "electron": "^1.7.10",
+    "electron-compilers": "^5.9.0",
     "electron-packager": "^10.1.1",
-    "electron-prebuilt": "^1.4.13",
+    "electron-prebuilt-compile": "^1.8.2-beta.3",
     "electron-reload": "^1.2.2",
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "electron-compile": "^6.4.2",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

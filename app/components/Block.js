@@ -9,7 +9,7 @@ class Block extends React.Component {
 
   render() {
     return (
-      <div> Hello Jartto! </div>
+      <div> Hello Jartto2! </div>
     );
   }
 }

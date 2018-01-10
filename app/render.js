@@ -26,7 +26,7 @@ class MainWindow extends React.Component {
     injectTapEventPlugin();
 
     this.state = {
-      userName: 'jartto',
+      userName: 'jartto3',
       password: '123456'
     };
   }
