@@ -2,7 +2,7 @@
   "env": {
     "development": {
       "application/javascript": {
-        "presets": ["es2016-node5", "react"],
+        "presets": ["env", "react"],
         "sourceMaps": "inline"
       },
       "text/less": {
@@ -11,7 +11,7 @@
     },
     "production": {
       "application/javascript": {
-        "presets": ["es2016-node5", "react"],
+        "presets": ["env", "react"],
         "sourceMaps": "none"
       }
     }
