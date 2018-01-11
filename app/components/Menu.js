@@ -14,16 +14,9 @@ import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
-// import styles from '../css/menu.less';
-const actionStyles = {
-  marginTop: 10,
-  marginLeft: 10
-};
-
 const svgStyles = {
   fill: grey800
 };
-
 
 export default class DrawerUndockedExample extends React.Component {
 
@@ -42,8 +35,8 @@ export default class DrawerUndockedExample extends React.Component {
 
   render() {
     return (
-      <div>
-        <FloatingActionButton style={actionStyles} onClick={this.handleToggle.bind(this)} backgroundColor={lightWhite}  mini={true}>
+      <div className="_menu">
+        <FloatingActionButton className="action" onClick={this.handleToggle.bind(this)} backgroundColor={lightWhite}  mini={true}>
           <NavigationMenu style={svgStyles} />
         </FloatingActionButton>
         <Drawer
