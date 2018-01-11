@@ -45,7 +45,6 @@ class MainWindow extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBar />
           <SideMenu />
         </div>
       </MuiThemeProvider>

@@ -1,9 +1,8 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
-import ActionInfo from 'material-ui/svg-icons/action/info';
+import ActionInfo from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import Avatar from 'material-ui/Avatar';
 import FileFolder from 'material-ui/svg-icons/file/folder';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
@@ -11,6 +10,8 @@ import ActionVoice from 'material-ui/svg-icons/action/settings-voice';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {blue500, yellow600, pink300, green400} from 'material-ui/styles/colors';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import IconButton from 'material-ui/IconButton';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 export default class DrawerUndockedExample extends React.Component {
 
@@ -30,10 +31,7 @@ export default class DrawerUndockedExample extends React.Component {
   render() {
     return (
       <div>
-        <RaisedButton
-          label="Open Drawer"
-          onClick={this.handleToggle.bind(this)}
-        />
+        <IconButton onClick={this.handleToggle.bind(this)}><NavigationMenu /></IconButton>
         <Drawer
           docked={false}
           width={230}
