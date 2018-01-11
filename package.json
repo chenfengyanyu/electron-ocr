@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "electron-packager ./ Electron-OCR --all --out ~/Desktop/Electron-OCR --version 0.0.1 --overwrite --icon=./public/image/icon.icns"
+    "package": "electron-packager ./ Electron-OCR --platform=darwin --arch=x64 --out ~/Desktop/Electron-OCR --version 0.0.1 --overwrite --icon=./public/image/icon.icns"
   },
   "repository": {
     "type": "git",
