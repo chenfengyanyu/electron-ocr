@@ -8,10 +8,22 @@ import FileFolder from 'material-ui/svg-icons/file/folder';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
 import ActionVoice from 'material-ui/svg-icons/action/settings-voice';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import {blue500, yellow600, pink300, green400} from 'material-ui/styles/colors';
+import {blue500, yellow600, pink300, green400, lightWhite, grey800} from 'material-ui/styles/colors';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+
+// import styles from '../css/menu.less';
+const actionStyles = {
+  marginTop: 10,
+  marginLeft: 10
+};
+
+const svgStyles = {
+  fill: grey800
+};
+
 
 export default class DrawerUndockedExample extends React.Component {
 
@@ -31,7 +43,9 @@ export default class DrawerUndockedExample extends React.Component {
   render() {
     return (
       <div>
-        <IconButton onClick={this.handleToggle.bind(this)}><NavigationMenu /></IconButton>
+        <FloatingActionButton style={actionStyles} onClick={this.handleToggle.bind(this)} backgroundColor={lightWhite}  mini={true}>
+          <NavigationMenu style={svgStyles} />
+        </FloatingActionButton>
         <Drawer
           docked={false}
           width={230}
