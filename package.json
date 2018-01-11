@@ -2,7 +2,7 @@
   "name": "electron-ocr",
   "version": "1.0.0",
   "description": "OCR(Optical Character Recognition), Electron, Tools",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
