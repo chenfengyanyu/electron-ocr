@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+
+import Upload from './components/Upload';
+import ListPage from './modules/list';
 
 const events = window.require('events');
 const path = window.require('path');
@@ -18,11 +28,13 @@ import {
 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import ActionBackup from 'material-ui/svg-icons/action/backup';
+
 
 import Block from './components/Block';
 import AppBar from './components/AppBar';
 import SideMenu from './components/Menu';
+
+
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
@@ -30,17 +42,6 @@ const muiTheme = getMuiTheme({
     // primary1Color: white,
   }
 });
-
-const iconStyles = {
-  width: '100px',
-  height: '100px',
-  fill: '#ececec',
-  position: 'relative',
-  top: '50%',
-  left: '50%',
-  margin: '-50px 0 0 -50px',
-  cursor: 'pointer'
-};
 
 class MainWindow extends React.Component {
 
@@ -55,14 +56,18 @@ class MainWindow extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <SideMenu />
-          <div className="box">
-            <ActionBackup style={iconStyles}/>
+      <Router>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            <SideMenu />
+            <Switch>
+              <Route path="/" exact component={Upload} />
+              <Route path="/list" component={ListPage} />
+              <Redirect to="/" />
+            </Switch>
           </div>
-        </div>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }

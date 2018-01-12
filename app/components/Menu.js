@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
@@ -13,6 +14,7 @@ import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+
 
 const svgStyles = {
   fill: grey800
@@ -46,16 +48,20 @@ export default class DrawerUndockedExample extends React.Component {
           onRequestChange={(open) => this.setState({open})}
         >
           <List>
-            <ListItem
-              leftAvatar={<Avatar icon={<ActionBackup />} backgroundColor={blue500} />}
-              rightIcon={<ActionInfo />}
-              primaryText="上传图片"
-            />
-            <ListItem
-              leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={yellow600} />}
-              rightIcon={<ActionInfo />}
-              primaryText="文字识别"
-            />
+            <Link to="/" onClick={this.handleClose.bind(this)}>
+              <ListItem
+                leftAvatar={<Avatar icon={<ActionBackup />} backgroundColor={blue500} />}
+                rightIcon={<ActionInfo />}
+                primaryText="上传图片"
+              />
+            </Link>
+            <Link to="/list" onClick={this.handleClose.bind(this)}>
+              <ListItem
+                leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={yellow600} />}
+                rightIcon={<ActionInfo />}
+                primaryText="文字识别"
+              />
+            </Link>
             <ListItem
               leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
               rightIcon={<ActionInfo />}
