@@ -1,7 +1,6 @@
 import {app, BrowserWindow, Menu, ipcMain, ipcRenderer} from 'electron';
 // import {enableLiveReload} from 'electron-compile';
 
-
 const path = require('path')
 const url = require('url')
 
