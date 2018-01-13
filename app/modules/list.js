@@ -13,9 +13,13 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    overflowX: 'auto',
+    height: '300px'
+  },
+  titleStyle: {
+    color: '#fff',
   },
 };
 
@@ -75,18 +79,16 @@ const tilesData = [
  */
 const GridListExampleSimple = () => (
   <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-    >
-      {tilesData.map((tile, index) => (
+    <GridList style={styles.gridList} cols={2.2}>
+      {tilesData.map((tile) => (
         <GridTile
-          key={index}
+          key={tile.id}
           title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+          actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
+          titleStyle={styles.titleStyle}
+          titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
         >
-          <img src={__dirname.replace('modules','') + tile.img} />
+          <img src={tile.img} width="300" height="400"/>
         </GridTile>
       ))}
     </GridList>

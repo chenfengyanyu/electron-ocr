@@ -37,14 +37,14 @@ class Upload extends React.Component {
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = () => {
-        console.log('Received files: ', files, this);
+        console.log('Received files: ', file);
         const fileAsBinaryString = reader.result;
         // do whatever you want with the file content
 
-        let myNotification = new Notification('Jartto', {
-          body: 'Hello Everybody!'
+        let myNotification = new Notification('图片上传成功', {
+          body: '即将跳转图片预览页！'
         })
-        this.props.history.push('/preview');
+        this.props.history.push({pathname:'/preview', myfile: file});
       };
       reader.onabort = () => console.log('file reading was aborted');
       reader.onerror = () => console.log('file reading has failed');

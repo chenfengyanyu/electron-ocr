@@ -70,7 +70,7 @@ export default class DrawerUndockedExample extends React.Component {
             <ListItem
               leftAvatar={<Avatar icon={<ActionFavorite />} backgroundColor={green400} />}
               rightIcon={<ActionInfo />}
-              primaryText="联系我们"
+              primaryText="在线示例"
             />
           </List>
         </Drawer>
