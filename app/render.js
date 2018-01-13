@@ -13,6 +13,7 @@ import ListPage from './modules/list';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SideMenu from './components/Menu';
+import Preview from './components/Preview';
 
 const electron = window.require('electron');
 const {ipcRenderer, shell} = electron;
@@ -45,6 +46,7 @@ class MainWindow extends React.Component {
             <Switch>
               <Route path="/" exact component={Upload} />
               <Route path="/list" component={ListPage} />
+              <Route path="/preview" component={Preview} />
               <Redirect to="/" />
             </Switch>
           </div>
