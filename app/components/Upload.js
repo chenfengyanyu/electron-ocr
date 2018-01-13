@@ -30,43 +30,35 @@ class Upload extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.goDetail = this.goDetail.bind(this);
+    // this.state = { files: [] };
   }
 
   onDrop(files) {
-    // let self = this;
-    // files.forEach(file => {
-    //   const reader = new FileReader();
-    //   reader.onload = () => {
-    //     console.log('Received files: ', files, this);
-    //     const fileAsBinaryString = reader.result;
-    //     // do whatever you want with the file content
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        console.log('Received files: ', files, this);
+        const fileAsBinaryString = reader.result;
+        // do whatever you want with the file content
 
-    //     let myNotification = new Notification('Jartto', {
-    //       body: 'Hello Everybody!'
-    //     })
-    //     this.props.history.push('/preview');
-    //   };
-    //   reader.onabort = () => console.log('file reading was aborted');
-    //   reader.onerror = () => console.log('file reading has failed');
+        let myNotification = new Notification('Jartto', {
+          body: 'Hello Everybody!'
+        })
+        this.props.history.push('/preview');
+      };
+      reader.onabort = () => console.log('file reading was aborted');
+      reader.onerror = () => console.log('file reading has failed');
 
-    //   reader.readAsBinaryString(file);
-    // });
-    // console.log(this.props);
-    this.goDetail();
+      reader.readAsBinaryString(file);
+    });
   }
-
-  goDetail(){
-    this.props.history.push('/preview');
-  }  
 
   render() {
     return (
-        <div className="box">
-          <Dropzone onDrop={this.onDrop} style={dropStyles}>
-            <ActionBackup style={iconStyles}/>
-          </Dropzone>
+      <div className="box">
+        <Dropzone onDrop={this.onDrop.bind(this)} style={dropStyles}>
+          <ActionBackup style={iconStyles}/>
+        </Dropzone>
       </div>
     );
   }

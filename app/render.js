@@ -37,6 +37,10 @@ class MainWindow extends React.Component {
     };
   }
 
+  goDetail(page){
+    this.props.history.push(`/${page}`);
+  }  
+
   render() {
     return (
       <Router>
