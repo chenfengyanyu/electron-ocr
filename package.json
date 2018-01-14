@@ -35,6 +35,7 @@
     "electron-reload": "^1.2.2"
   },
   "dependencies": {
+    "baidu-ocr-api": "^2.0.5",
     "electron-compile": "^6.4.2",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
