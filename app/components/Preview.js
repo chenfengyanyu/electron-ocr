@@ -14,6 +14,7 @@ import Voice from 'material-ui/svg-icons/av/mic';
 import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
+import { getAccessToken } from '../../service/api';
 
 // const ocr = require('baidu-ocr-api').create('BGGSqXpPIziVHB2FoTiLCjzv','ojvkATDVr4RVMC7yW2GPuQ7CzNyw19sZ');
 
@@ -48,6 +49,7 @@ class Preview extends React.Component {
     // }).catch(function (err) {
     //   console.log('err', err);
     // })
+    console.log(getAccessToken(),'token');
   }
 
   render() {
