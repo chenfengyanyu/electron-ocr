@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "baidu-ocr-api": "^2.0.5",
-    "based-blob": "^1.0.1",
     "electron-compile": "^6.4.2",
     "material-ui": "^0.20.0",
     "querystring": "^0.2.0",

@@ -36,6 +36,7 @@ class Preview extends React.Component {
     // console.log(this.props.location.myfile);
     this.state = {
       myfile: this.props.location.myfile,
+      binary: this.props.location.binary,
       src: 'image/t2.png'
     };
   }
@@ -51,9 +52,11 @@ class Preview extends React.Component {
     // })
     console.log(getAccessToken(),'token');
     // generateRecognition(this.state.path);
-    this.blobToBase64(this.state.myfile, function(b64data) {
-      generateRecognition(b64data);
-    })
+    // this.blobToBase64(this.state.myfile, function(b64data) {
+    //   generateRecognition(b64data);
+    // })
+    console.log(this.state.binary.replace('data:image/jpeg;base64,',''));
+    generateRecognition(this.state.binary.replace('data:image/jpeg;base64,',''));
   }
 
   blobToBase64(blob, callback) {

@@ -34,25 +34,32 @@ class Upload extends React.Component {
   }
 
   onDrop(files) {
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        console.log('Received files: ', file);
-        // const fileAsBinaryString = reader.result;
-        // do whatever you want with the file content
+    var file = files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      // console.log(event.target.result);
+      this.props.history.push({pathname:'/preview',binary: event.target.result});
+    };
+    reader.readAsDataURL(file);
+    // files.forEach(file => {
+    //   const reader = new FileReader();
+    //   reader.onload = () => {
+    //     console.log('Received files: ', file);
+    //     const fileAsBinaryString = reader.result;
+    //     // do whatever you want with the file content
 
-        // console.log(encodeURI(fileAsBinaryString),'fileAsBinaryString');
+    //     // console.log(encodeURI(fileAsBinaryString),'fileAsBinaryString');
 
-        let myNotification = new Notification('图片上传成功', {
-          body: '即将跳转图片预览页！'
-        })
-        this.props.history.push({pathname:'/preview', myfile: file});
-      };
-      reader.onabort = () => console.log('file reading was aborted');
-      reader.onerror = () => console.log('file reading has failed');
+    //     let myNotification = new Notification('图片上传成功', {
+    //       body: '即将跳转图片预览页！'
+    //     })
+    //     this.props.history.push({pathname:'/preview', myfile: file, binary: fileAsBinaryString});
+    //   };
+    //   reader.onabort = () => console.log('file reading was aborted');
+    //   reader.onerror = () => console.log('file reading has failed');
 
-      reader.readAsBinaryString(file);
-    });
+    //   reader.readAsBinaryString(file);
+    // });
   }
 
   render() {
