@@ -38,8 +38,10 @@ class Upload extends React.Component {
       const reader = new FileReader();
       reader.onload = () => {
         console.log('Received files: ', file);
-        const fileAsBinaryString = reader.result;
+        // const fileAsBinaryString = reader.result;
         // do whatever you want with the file content
+
+        // console.log(encodeURI(fileAsBinaryString),'fileAsBinaryString');
 
         let myNotification = new Notification('图片上传成功', {
           body: '即将跳转图片预览页！'

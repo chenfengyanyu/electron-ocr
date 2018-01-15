@@ -14,7 +14,7 @@ import Voice from 'material-ui/svg-icons/av/mic';
 import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
-import { getAccessToken } from '../../service/api';
+import { getAccessToken, generateRecognition } from '../../service/api';
 
 // const ocr = require('baidu-ocr-api').create('BGGSqXpPIziVHB2FoTiLCjzv','ojvkATDVr4RVMC7yW2GPuQ7CzNyw19sZ');
 
@@ -50,7 +50,19 @@ class Preview extends React.Component {
     //   console.log('err', err);
     // })
     console.log(getAccessToken(),'token');
+    // generateRecognition(this.state.path);
+    this.blobToBase64(this.state.myfile, function(b64data) {
+      generateRecognition(b64data);
+    })
   }
+
+  blobToBase64(blob, callback) {
+    let fileReader = new FileReader();
+    fileReader.onload = function(e) {
+      callback && callback(e.target.result);
+    };
+    fileReader.readAsDataURL(blob);
+  };
 
   render() {
     let img;
