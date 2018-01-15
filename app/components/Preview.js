@@ -16,8 +16,6 @@ import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
 import { getAccessToken, generateRecognition } from '../../service/api';
 
-// const ocr = require('baidu-ocr-api').create('BGGSqXpPIziVHB2FoTiLCjzv','ojvkATDVr4RVMC7yW2GPuQ7CzNyw19sZ');
-
 const styles = {
   button: {
     textAlign: 'center'
@@ -42,21 +40,11 @@ class Preview extends React.Component {
   }
 
   textOcr() {
-    // ocr.scan({
-    //   url: this.state.myfile.path, // 支持本地路径
-    //   type:'text',
-    // }).then(function (result) {
-    //   return console.log(result)
-    // }).catch(function (err) {
-    //   console.log('err', err);
-    // })
     console.log(getAccessToken(),'token');
-    // generateRecognition(this.state.path);
-    // this.blobToBase64(this.state.myfile, function(b64data) {
-    //   generateRecognition(b64data);
-    // })
-    console.log(this.state.binary.replace('data:image/jpeg;base64,',''));
-    generateRecognition(this.state.binary.replace('data:image/jpeg;base64,',''));
+    generateRecognition(this.state.path);
+    this.blobToBase64(this.state.myfile, function(b64data) {
+      generateRecognition(b64data.replace('data:image/jpeg;base64,',''));
+    })
   }
 
   blobToBase64(blob, callback) {
