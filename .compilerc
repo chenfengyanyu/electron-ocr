@@ -3,7 +3,13 @@
     "development": {
       "application/javascript": {
         "presets": ["env", "react"],
-        "sourceMaps": "inline"
+        "sourceMaps": "inline",
+        "plugins": [
+          ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+          }]
+        ]
       },
       "text/less": {
         "dumpLineNumbers": "comments"
@@ -12,7 +18,13 @@
     "production": {
       "application/javascript": {
         "presets": ["env", "react"],
-        "sourceMaps": "none"
+        "sourceMaps": "none",
+        "plugins": [
+          ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+          }]
+        ]
       }
     }
   }

@@ -39,12 +39,13 @@ class Preview extends React.Component {
     };
   }
 
-  textOcr() {
-    console.log(getAccessToken(),'token');
-    generateRecognition(this.state.path);
-    this.blobToBase64(this.state.myfile, function(b64data) {
-      generateRecognition(b64data.replace('data:image/jpeg;base64,',''));
-    })
+  async textOcr() {
+    let _accessToken = await getAccessToken();
+    console.log(_accessToken,'token');
+    
+    // this.blobToBase64(this.state.myfile, function(b64data) {
+    //   await generateRecognition(_accessToken, b64data.replace('data:image/jpeg;base64,',''));
+    // })
   }
 
   blobToBase64(blob, callback) {
