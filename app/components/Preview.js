@@ -15,6 +15,8 @@ import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
 import { getAccessToken, generateRecognition } from '../../service/api';
+import { resolve } from 'dns';
+import { debug } from 'util';
 
 const styles = {
   button: {
@@ -35,26 +37,37 @@ class Preview extends React.Component {
     this.state = {
       myfile: this.props.location.myfile,
       binary: this.props.location.binary,
-      src: 'image/t2.png'
+      src: 'image/t2.png',
+      result: '即将要展示的文本'
     };
+
+    this.blobToBase64 = this.blobToBase64.bind(this);
   }
 
   async textOcr() {
-    let _accessToken = await getAccessToken();
-    console.log(_accessToken,'token');
-    
-    // this.blobToBase64(this.state.myfile, function(b64data) {
-    //   await generateRecognition(_accessToken, b64data.replace('data:image/jpeg;base64,',''));
-    // })
+    let base64, result = '';
+    base64 = await this.blobToBase64(this.state.myfile);
+    result = await generateRecognition(base64.replace('data:image/jpeg;base64,',''));
+    console.log(result,'_result');
+    this.setState({
+      result: result.words_result[0].words
+    })
   }
 
   blobToBase64(blob, callback) {
-    let fileReader = new FileReader();
-    fileReader.onload = function(e) {
-      callback && callback(e.target.result);
-    };
-    fileReader.readAsDataURL(blob);
+    return new Promise((resolve, reject) => {
+      let fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        resolve(e.target.result);
+      }
+      fileReader.readAsDataURL(blob);
+      fileReader.onerror = () => {
+        reject(new Error('文件流异常'));
+      }
+    })
   };
+
+
 
   render() {
     let img;
@@ -68,7 +81,7 @@ class Preview extends React.Component {
     return (
       <Card style={styles.cardStyles}>
         <CardMedia
-          overlay={< CardTitle title={"识别结果"} subtitle = "北京是个美丽的城市。" />}>
+          overlay={< CardTitle title={"识别结果"} subtitle = {this.state.result} />}>
           <img src={img || this.state.src} height="420" alt=""/>
         </CardMedia>
         <CardActions style={styles.button}>

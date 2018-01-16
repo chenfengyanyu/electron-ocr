@@ -24,19 +24,19 @@ export async function getAccessToken() {
 }
 
 // 通用文字识别
-// export async function generateRecognition(token, param) {
-//   const access_token = qs.stringify({
-//     access_token: token,
-//   });
-//   request
-//     .post({
-//       url: `https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?${access_token}`,
-//       headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//       },
-//       form: { image: param }
-//     }, function (err, httpResponse, body) {
-//       console.log('body:', body);
-//       console.log('err:', err);
-//     })
-// }
+export async function generateRecognition(param) {
+  let token = await getAccessToken();
+  return new Promise((resolve, reject) => {
+    request
+    .post(`https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=${token}`)
+    .send({ image: param })
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .then(res => {
+      // console.log(res.body);
+      resolve(res.body);
+    })
+    .catch(err => {
+      reject(err.message);
+    })
+  })
+}
