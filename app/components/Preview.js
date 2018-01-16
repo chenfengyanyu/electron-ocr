@@ -20,12 +20,17 @@ import { debug } from 'util';
 
 const styles = {
   button: {
+    borderTop: '1px solid #f1f0f0',
     textAlign: 'center'
   },
   cardStyles: {
     width: '80%',
     margin: '10px auto 0',
     cursor: 'pointer'
+  },
+  titleStyles: {
+    textAlign: 'justify',
+    padding: '0px 8px 8px'
   }
 };
 
@@ -37,8 +42,9 @@ class Preview extends React.Component {
     this.state = {
       myfile: this.props.location.myfile,
       binary: this.props.location.binary,
-      src: 'image/t2.png',
-      result: '即将要展示的文本'
+      src: 'image/placeholder.png',
+      result: (this.props.location.myfile && this.props.location.myfile.name) || '正在识别中...',
+      expanded: false
     };
 
     this.blobToBase64 = this.blobToBase64.bind(this);
@@ -50,7 +56,8 @@ class Preview extends React.Component {
     result = await generateRecognition(base64.replace('data:image/jpeg;base64,',''));
     console.log(result,'_result');
     this.setState({
-      result: result.words_result[0].words
+      result: result.words_result && result.words_result.map(item => item.words).join(''),
+      expanded: true
     })
   }
 
@@ -67,7 +74,14 @@ class Preview extends React.Component {
     })
   };
 
+  handleExpandChange() {
+    this.setState({expanded: !this.state.expanded});
+  }
 
+  componentDidMount() {
+    if(this.state.result === '正在识别中...') return;
+    this.textOcr();
+  }
 
   render() {
     let img;
@@ -78,10 +92,12 @@ class Preview extends React.Component {
     } else {
       img = this.state.src;
     }
+    let _card = !this.state.expanded
+                ? <div></div>
+                : <CardTitle style={styles.titleStyles} subtitle={this.state.result} subtitleStyle={{fontSize:'12px',lineHeight: '18px'}}/>;
     return (
       <Card style={styles.cardStyles}>
-        <CardMedia
-          overlay={< CardTitle title={"识别结果"} subtitle = {this.state.result} />}>
+        <CardMedia overlayContentStyle={{paddingTop:'0'}} overlayContainerStyle={{paddingTop:'0'}} overlay={_card} onClick={this.handleExpandChange.bind(this)}>
           <img src={img || this.state.src} height="420" alt=""/>
         </CardMedia>
         <CardActions style={styles.button}>
@@ -93,7 +109,7 @@ class Preview extends React.Component {
           />
           <RaisedButton
             target="_blank"
-            label="文字识别"
+            label="精确识别"
             primary={true}
             icon={<Text />}
             onClick={this.textOcr.bind(this)}
