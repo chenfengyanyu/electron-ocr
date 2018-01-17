@@ -22,8 +22,7 @@ import Howler from 'howler';
 const electron = window.require('electron');
 // const {ipcRenderer, shell} = electron;
 const {dialog} = electron.remote;
-// const clipboard = electron.clipboard;
-
+const clipboard = electron.clipboard;
 
 const styles = {
   button: {
@@ -33,15 +32,19 @@ const styles = {
   cardStyles: {
     width: '80%',
     margin: '10px auto 0',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    borderRadius: '5px'
+    // overflow: 'auto'
   },
   titleStyles: {
     textAlign: 'justify',
     padding: '8px'
   },
   mediaStyles: {
+    borderRadius: '5px 5px 0 0',
     height: '420px',
     display: 'flex',
+    overflow: 'auto',
     alignItems: 'center',
     justifyContent: 'center',
     background: 'url(image/dot1.png) repeat 0 0 transparent'
@@ -69,25 +72,27 @@ class Preview extends React.Component {
   }
 
   async baseOCR(type) {
-    let base64, result = '';
+    let base64, result = '', notice = '';
     base64 = await this.blobToBase64(this.state.myfile);
     // data:image/png;base64,data:image/jpeg;base64,
     if(type === 'enhanced') {
       result = await enhancedRecognition(base64.replace(/^data:image\/(jpeg|png|gif);base64,/,''));
+      notice = '繁体字校准完成，已复制，可直接粘贴！';
     } else {
       result = await generateRecognition(base64.replace(/^data:image\/(jpeg|png|gif);base64,/,''));
+      notice = '文字识别成功，已复制，可直接粘贴！';
     }
     
+    let temp = result.words_result && result.words_result.map(item => item.words).join('');
     console.log(result,'_result');
-
-    // clipboard.writeText(result);
+    clipboard.writeText(temp);
 
     let myNotification = new Notification('图片识别', {
-      body: '文字识别成功，写入粘贴板，可直接复制！'
+      body: notice
     })
 
     this.setState({
-      result: result.words_result && result.words_result.map(item => item.words).join(''),
+      result: temp,
       expanded: true
     })
   }
@@ -150,7 +155,7 @@ class Preview extends React.Component {
           />
           <RaisedButton
             target="_blank"
-            label="繁体校验"
+            label="繁体校准"
             primary={true}
             icon={<Text />}
             onClick={this.baseOCR.bind(this,'enhanced')}
