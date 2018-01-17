@@ -1,10 +1,7 @@
 import React from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
+import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
-const path = require('path');
 
 const styles = {
   root: {
@@ -16,7 +13,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'nowrap',
     overflowX: 'auto',
-    height: '300px'
+    height: '300px',
   },
   titleStyle: {
     color: '#fff',
@@ -80,7 +77,7 @@ const tilesData = [
 const GridListExampleSimple = () => (
   <div style={styles.root}>
     <GridList style={styles.gridList} cols={2.2}>
-      {tilesData.map((tile) => (
+      {tilesData.map(tile => (
         <GridTile
           key={tile.id}
           title={tile.title}
@@ -88,7 +85,7 @@ const GridListExampleSimple = () => (
           titleStyle={styles.titleStyle}
           titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
         >
-          <img src={tile.img} width="300" height="400"/>
+          <img src={tile.img} alt="" width="300" height="400" />
         </GridTile>
       ))}
     </GridList>

@@ -59,9 +59,14 @@ export default class DrawerUndockedExample extends React.Component {
               <ListItem
                 leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={yellow600} />}
                 rightIcon={<ActionInfo />}
-                primaryText="临时文件"
+                primaryText="大图裁切"
               />
             </Link>
+            <ListItem
+              leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
+              rightIcon={<ActionInfo />}
+              primaryText="注意事项"
+            />
             <ListItem
               leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
               rightIcon={<ActionInfo />}
