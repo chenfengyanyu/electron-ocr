@@ -38,7 +38,9 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "bluebird": "^3.5.1",
+    "cuid": "^2.0.2",
     "electron-compile": "^6.4.2",
+    "howler": "^2.0.7",
     "material-ui": "^0.20.0",
     "querystring": "^0.2.0",
     "react": "^16.2.0",

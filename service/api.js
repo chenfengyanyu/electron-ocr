@@ -1,17 +1,38 @@
 import request from 'superagent';
 import qs from 'querystring';
-import {debug} from 'util';
-import { resolve } from 'path';
+import cuid from 'cuid';
 
-// 获取Access Token
+// 获取通用 Access Token
 export async function getAccessToken() {
   const param = qs.stringify({
-    'grant_type': 'client_credentials', 'client_id': 'BGGSqXpPIziVHB2FoTiLCjzv', // 您的 Api Key
+    'grant_type': 'client_credentials',
+    'client_id': 'BGGSqXpPIziVHB2FoTiLCjzv', // 您的 Api Key
     'client_secret': 'ojvkATDVr4RVMC7yW2GPuQ7CzNyw19sZ' // 您的 Secret Key
   });
   return new Promise((resolve, reject) => {
     request
     .get(`https://aip.baidubce.com/oauth/2.0/token?${param}`)
+    .then(function(res) {
+        // res.body, res.headers, res.status
+        resolve(res.body.access_token);
+    })
+    .catch(function(err) {
+        // err.message, err.response
+        reject(err.message);
+    });
+  })
+}
+
+// 获取通用语音识别 Token
+export async function getAudioToken() {
+  const param = qs.stringify({
+    'grant_type': 'client_credentials',
+    'client_id': '8eVGWDxznSkQzFLxcCUUtZfT', // 您的 Api Key
+    'client_secret': 'RTzFnczTtzF0Q97HftVw3bCo0ZMRNZIK' // 您的 Secret Key
+  });
+  return new Promise((resolve, reject) => {
+    request
+    .get(`https://openapi.baidu.com/oauth/2.0/token?${param}`)
     .then(function(res) {
         // res.body, res.headers, res.status
         resolve(res.body.access_token);
@@ -76,5 +97,32 @@ export async function enhancedRecognition(param) {
     .catch(err => {
       reject(err.message);
     })
+  })
+}
+
+// 语音合成
+export async function getAudio(text) {
+  let token = await getAudioToken();
+  const param = qs.stringify({
+    'tex': encodeURIComponent(text),
+    'tok': token,
+    'cuid': cuid(),
+    'ctp': 1,
+    'lan': 'zh',
+    'per': 4
+  });
+  // console.log(param,'param');
+  return new Promise((resolve, reject) => {
+    request
+    .get(`http://tsn.baidu.com/text2audio?${param}`)
+    .then(function(res) {
+        // res.body, res.headers, res.status
+        console.log(res);
+        resolve(res.request.url);
+    })
+    .catch(function(err) {
+        // err.message, err.response
+        reject(err.message);
+    });
   })
 }

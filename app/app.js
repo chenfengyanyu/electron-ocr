@@ -1,8 +1,8 @@
-import {app, BrowserWindow, Menu, ipcMain, ipcRenderer} from 'electron';
-// import {enableLiveReload} from 'electron-compile';
-
-const path = require('path')
-const url = require('url')
+import {app, BrowserWindow, Menu, ipcMain, ipcRenderer, globalShortcut, dialog, clipboard} from 'electron';
+// const globalShortcut = require('electron').;
+// const dialog = require('electron').;
+const path = require('path');
+const url = require('url');
 
 let mainWindow;
 let isDevelopment = true;
@@ -25,7 +25,7 @@ function createWindow () {
   }))
 
   if (isDevelopment) {
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
 
   mainWindow.on('closed', function () {
@@ -33,7 +33,19 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', function() {
+  createWindow();
+
+  // 注册 'command+c' 按键监听
+  // let ret = globalShortcut.register('command+c', function() {
+    // clipboard.writeText('Hello Jartto!');
+    // dialog.showErrorBox('Electron-OCR', '识别文本已复制！');
+  // })
+
+  // if (!ret) {
+    // dialog.showErrorBox('Electron-OCR', 'registration failed');
+  // }
+})
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
@@ -46,3 +58,11 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+// app.on('will-quit', function() {
+//   // Unregister a shortcut.
+//   globalShortcut.unregister('command+c');
+
+//   // Unregister all shortcuts.
+//   globalShortcut.unregisterAll();
+// });
