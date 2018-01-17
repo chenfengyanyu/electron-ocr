@@ -18,6 +18,10 @@ import { getAccessToken, generateRecognition, accurateRecognition, enhancedRecog
 import { resolve } from 'dns';
 import { debug } from 'util';
 
+const electron = window.require('electron');
+// const {ipcRenderer, shell} = electron;
+const {dialog} = electron.remote;
+
 const styles = {
   button: {
     borderTop: '1px solid #f1f0f0',
@@ -30,7 +34,14 @@ const styles = {
   },
   titleStyles: {
     textAlign: 'justify',
-    padding: '0px 8px 8px'
+    padding: '8px'
+  },
+  mediaStyles: {
+    height: '420px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'url(image/dot1.png) repeat 0 0 transparent'
   }
 };
 
@@ -53,8 +64,14 @@ class Preview extends React.Component {
   async baseOCR() {
     let base64, result = '';
     base64 = await this.blobToBase64(this.state.myfile);
-    result = await enhancedRecognition(base64.replace('data:image/jpeg;base64,',''));
+    // data:image/png;base64,data:image/jpeg;base64,
+    result = await generateRecognition(base64.replace(/^data:image\/(jpeg|png|gif);base64,/,''));
     console.log(result,'_result');
+
+    let myNotification = new Notification('图片识别', {
+      body: '文字识别成功！'
+    })
+
     this.setState({
       result: result.words_result && result.words_result.map(item => item.words).join(''),
       expanded: true
@@ -97,8 +114,8 @@ class Preview extends React.Component {
                 : <CardTitle style={styles.titleStyles} subtitle={this.state.result} subtitleStyle={{fontSize:'12px',lineHeight: '18px'}}/>;
     return (
       <Card style={styles.cardStyles}>
-        <CardMedia overlayContentStyle={{paddingTop:'0'}} overlayContainerStyle={{paddingTop:'0'}} overlay={_card} onClick={this.handleExpandChange.bind(this)}>
-          <img src={img || this.state.src} height="420" alt=""/>
+        <CardMedia style={styles.mediaStyles} overlayContentStyle={{paddingTop:'0'}} overlayContainerStyle={{paddingTop:'0'}} overlay={_card} onClick={this.handleExpandChange.bind(this)}>
+          <img src={img || this.state.src}  alt=""/>
         </CardMedia>
         <CardActions style={styles.button}>
           <RaisedButton

@@ -37,6 +37,8 @@ export async function generateRecognition(param) {
     })
     .catch(err => {
       reject(err.message);
+      // 通用识别异常，自动调用生僻字接口
+      enhancedRecognition(param);
     })
   })
 }

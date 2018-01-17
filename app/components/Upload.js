@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
 import Dropzone from 'react-dropzone';
 
-const electron = window.require('electron');
-const {ipcRenderer, shell} = electron;
-const {dialog} = electron.remote;
-
 const dropStyles = {
   width: '300px',
   height: '300px',
@@ -39,9 +35,6 @@ class Upload extends React.Component {
       reader.onload = () => {
         console.log('Received files: ', file);
         const fileAsBinaryString = reader.result;
-        let myNotification = new Notification('图片上传成功', {
-          body: '即将跳转图片预览页！'
-        })
         this.props.history.push({pathname:'/preview', myfile: file, binary: fileAsBinaryString});
       };
       reader.onabort = () => console.log('file reading was aborted');
