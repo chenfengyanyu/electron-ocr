@@ -1,13 +1,14 @@
 import request from 'superagent';
 import qs from 'querystring';
 import cuid from 'cuid';
+import Keys from '../config';
 
 // 获取通用 Access Token
 export async function getAccessToken() {
   const param = qs.stringify({
     'grant_type': 'client_credentials',
-    'client_id': 'BGGSqXpPIziVHB2FoTiLCjzv', // 您的 Api Key
-    'client_secret': 'ojvkATDVr4RVMC7yW2GPuQ7CzNyw19sZ' // 您的 Secret Key
+    'client_id': Keys.ak, 
+    'client_secret': Keys.sk 
   });
   return new Promise((resolve, reject) => {
     request
@@ -109,6 +110,7 @@ export async function getAudio(text) {
     'cuid': cuid(),
     'ctp': 1,
     'lan': 'zh',
+    'spd': 3,
     'per': 4
   });
   // console.log(param,'param');

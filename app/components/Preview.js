@@ -150,7 +150,7 @@ class Preview extends React.Component {
           />
           <RaisedButton
             target="_blank"
-            label="繁体识别"
+            label="繁体校验"
             primary={true}
             icon={<Text />}
             onClick={this.baseOCR.bind(this,'enhanced')}

@@ -24,9 +24,9 @@ function createWindow () {
     icon: 'image/icon.png'
   }))
 
-  if (isDevelopment) {
-    mainWindow.webContents.openDevTools();
-  }
+  // if (isDevelopment) {
+  //   mainWindow.webContents.openDevTools();
+  // }
 
   mainWindow.on('closed', function () {
     mainWindow = null;
