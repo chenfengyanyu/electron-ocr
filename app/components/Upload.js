@@ -47,7 +47,6 @@ class Upload extends React.Component {
   render() {
     return (
       <div className="box">
-        
         <Dropzone onDrop={this.onDrop.bind(this)} style={dropStyles}>
           <ActionBackup style={iconStyles}/>
           <div className="desc">拖拽文件或点击上传</div>

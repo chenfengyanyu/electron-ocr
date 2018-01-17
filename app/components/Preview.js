@@ -15,9 +15,8 @@ import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
 import { generateRecognition, getAudio, enhancedRecognition} from '../../service/api';
-import { resolve } from 'dns';
-import { debug } from 'util';
 import Howler from 'howler';
+import {fullWhite} from 'material-ui/styles/colors';
 
 const electron = window.require('electron');
 // const {ipcRenderer, shell} = electron;
@@ -163,8 +162,9 @@ class Preview extends React.Component {
           <RaisedButton
             target="_blank"
             label="语音播报"
-            primary={true}
-            icon={<Voice />}
+            labelColor={fullWhite}
+            icon={<Voice color={fullWhite}/>}
+            backgroundColor="#a4c639"
             onClick={this.palyAudio.bind(this)}
           />
         </CardActions>

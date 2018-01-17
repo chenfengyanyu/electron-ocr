@@ -14,6 +14,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SideMenu from './components/Menu';
 import Preview from './components/Preview';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 const electron = window.require('electron');
 const {ipcRenderer, shell} = electron;
@@ -25,6 +26,15 @@ const muiTheme = getMuiTheme({
     // primary1Color: white,
   }
 });
+
+const style = {
+  refresh: {
+    display: 'inline-block',
+    position: 'absolute',
+    opacity: '0.6',
+  },
+};
+
 
 class MainWindow extends React.Component {
 
@@ -47,6 +57,14 @@ class MainWindow extends React.Component {
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
             <SideMenu />
+            <RefreshIndicator
+              size={40}
+              left={750}
+              top={10}
+              loadingColor="#FFB74D"
+              status="loading"
+              style={style.refresh}
+            />
             <Switch>
               <Route path="/" exact component={Upload} />
               <Route path="/list" component={ListPage} />
