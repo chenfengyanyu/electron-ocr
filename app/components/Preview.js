@@ -14,7 +14,7 @@ import Voice from 'material-ui/svg-icons/av/mic';
 import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 import FontIcon from 'material-ui/FontIcon';
-import { getAccessToken, generateRecognition } from '../../service/api';
+import { getAccessToken, generateRecognition, accurateRecognition, enhancedRecognition} from '../../service/api';
 import { resolve } from 'dns';
 import { debug } from 'util';
 
@@ -50,10 +50,10 @@ class Preview extends React.Component {
     this.blobToBase64 = this.blobToBase64.bind(this);
   }
 
-  async textOcr() {
+  async baseOCR() {
     let base64, result = '';
     base64 = await this.blobToBase64(this.state.myfile);
-    result = await generateRecognition(base64.replace('data:image/jpeg;base64,',''));
+    result = await enhancedRecognition(base64.replace('data:image/jpeg;base64,',''));
     console.log(result,'_result');
     this.setState({
       result: result.words_result && result.words_result.map(item => item.words).join(''),
@@ -80,7 +80,7 @@ class Preview extends React.Component {
 
   componentDidMount() {
     if(this.state.result === '正在识别中...') return;
-    this.textOcr();
+    this.baseOCR();
   }
 
   render() {
@@ -112,7 +112,7 @@ class Preview extends React.Component {
             label="精确识别"
             primary={true}
             icon={<Text />}
-            onClick={this.textOcr.bind(this)}
+            onClick={this.baseOCR.bind(this)}
           />
           <RaisedButton
             target="_blank"
