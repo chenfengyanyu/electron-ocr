@@ -12,18 +12,17 @@ const dropStyles = {
   margin: '-150px 0 0 -150px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
-}
+  justifyContent: 'center',
+};
 
 const iconStyles = {
   width: '100px',
   height: '100px',
   fill: '#ececec',
-  cursor: 'pointer'
+  cursor: 'pointer',
 };
 
 class Upload extends React.Component {
-
   constructor(props) {
     super(props);
     // this.state = { files: [] };

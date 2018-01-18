@@ -3,22 +3,23 @@ import ReactDOM from 'react-dom';
 import {
   HashRouter as Router,
   Route,
-  Link,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Upload from './components/Upload';
-import ListPage from './modules/list';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 import SideMenu from './components/Menu';
 import Preview from './components/Preview';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
+import Upload from './components/Upload';
+import ListPage from './modules/list';
+import About from './modules/about';
 
-const electron = window.require('electron');
-const {ipcRenderer, shell} = electron;
-const {dialog} = electron.remote;
+/* eslint-disable */
+// const electron = window.require('electron');
+// const { ipcRenderer, shell } = electron;
+// const { dialog } = electron.remote;
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
@@ -69,6 +70,7 @@ class MainWindow extends React.Component {
               <Route path="/" exact component={Upload} />
               <Route path="/list" component={ListPage} />
               <Route path="/preview" component={Preview} />
+              <Route path="/about" component={About} />
               <Redirect to="/" />
             </Switch>
           </div>
@@ -78,5 +80,5 @@ class MainWindow extends React.Component {
   }
 }
 
-let mainWndComponent = ReactDOM.render(
+const mainWndComponent = ReactDOM.render(
   <MainWindow/>, document.getElementById('content'));

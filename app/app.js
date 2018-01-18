@@ -1,28 +1,30 @@
-import {app, BrowserWindow, Menu, ipcMain, ipcRenderer, globalShortcut, dialog, clipboard} from 'electron';
+/* eslint-disable */
+import { app, BrowserWindow, Menu, ipcMain, ipcRenderer, globalShortcut, dialog, clipboard } from 'electron';
 // const globalShortcut = require('electron').;
 // const dialog = require('electron').;
 const path = require('path');
 const url = require('url');
 
 let mainWindow;
-let isDevelopment = true;
+const isDevelopment = true;
 
 if (isDevelopment) {
+  /* eslint-disable */
   require('electron-reload')(__dirname, {
     electron: require('${__dirname}/../../node_modules/electron'),
     ignored: /node_modules|[\/\\]\./
   });
 }
 
-function createWindow () {
-  mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false})
+function createWindow() {
+  mainWindow = new BrowserWindow({ width: 800, height: 600, resizable: false });
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, './index.html'),
     protocol: 'file:',
     slashes: true,
-    icon: 'image/icon.png'
-  }))
+    icon: 'image/icon.png',
+  }));
 
   // if (isDevelopment) {
   //   mainWindow.webContents.openDevTools();

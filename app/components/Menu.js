@@ -1,39 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import ActionInfo from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import Avatar from 'material-ui/Avatar';
-import FileFolder from 'material-ui/svg-icons/file/folder';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
 import ActionVoice from 'material-ui/svg-icons/action/settings-voice';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import {blue500, yellow600, pink300, green400, lightWhite, grey800} from 'material-ui/styles/colors';
+import { blue500, yellow600, pink300, green400, lightWhite, grey800 } from 'material-ui/styles/colors';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
-import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 
 const svgStyles = {
-  fill: grey800
+  fill: grey800,
 };
 
 export default class DrawerUndockedExample extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = { open: false };
   }
 
-  handleToggle () {
-    this.setState({open: !this.state.open});
+  handleToggle() {
+    this.setState({ open: !this.state.open });
   }
 
-  handleClose () {
-    this.setState({open: false});
-  } 
+  handleClose() {
+    this.setState({ open: false });
+  }
 
   render() {
     return (
@@ -45,7 +41,7 @@ export default class DrawerUndockedExample extends React.Component {
           docked={false}
           width={230}
           open={this.state.open}
-          onRequestChange={(open) => this.setState({open})}
+          onRequestChange={open => this.setState({ open })}
         >
           <List>
             <Link to="/" onClick={this.handleClose.bind(this)}>
@@ -65,18 +61,20 @@ export default class DrawerUndockedExample extends React.Component {
             <ListItem
               leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
               rightIcon={<ActionInfo />}
-              primaryText="注意事项"
+              primaryText="图片示例"
             />
             <ListItem
               leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
               rightIcon={<ActionInfo />}
               primaryText="注意事项"
             />
-            <ListItem
-              leftAvatar={<Avatar icon={<ActionFavorite />} backgroundColor={green400} />}
-              rightIcon={<ActionInfo />}
-              primaryText="关于作者"
-            />
+            <Link to="/about" onClick={this.handleClose.bind(this)}>
+              <ListItem
+                leftAvatar={<Avatar icon={<ActionFavorite />} backgroundColor={green400} />}
+                rightIcon={<ActionInfo />}
+                primaryText="关于作者"
+              />
+            </Link>
           </List>
         </Drawer>
       </div>
