@@ -15,6 +15,7 @@ import Preview from './components/Preview';
 import Upload from './components/Upload';
 import ListPage from './modules/list';
 import About from './modules/about';
+import Attention from './modules/attention';
 
 /* eslint-disable */
 // const electron = window.require('electron');
@@ -70,6 +71,7 @@ class MainWindow extends React.Component {
               <Route path="/" exact component={Upload} />
               <Route path="/list" component={ListPage} />
               <Route path="/preview" component={Preview} />
+              <Route path="/attention" component={Attention} />
               <Route path="/about" component={About} />
               <Redirect to="/" />
             </Switch>

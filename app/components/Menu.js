@@ -63,11 +63,13 @@ export default class DrawerUndockedExample extends React.Component {
               rightIcon={<ActionInfo />}
               primaryText="图片示例"
             />
-            <ListItem
-              leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
-              rightIcon={<ActionInfo />}
-              primaryText="注意事项"
-            />
+            <Link to="/attention" onClick={this.handleClose.bind(this)}>
+              <ListItem
+                leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
+                rightIcon={<ActionInfo />}
+                primaryText="注意事项"
+              />
+            </Link>
             <Link to="/about" onClick={this.handleClose.bind(this)}>
               <ListItem
                 leftAvatar={<Avatar icon={<ActionFavorite />} backgroundColor={green400} />}
