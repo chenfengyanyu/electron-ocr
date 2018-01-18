@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-import Voice from 'material-ui/svg-icons/av/mic';
+import Hearing from 'material-ui/svg-icons/av/hearing';
 import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 // import Howler from 'howler';
@@ -18,7 +18,7 @@ import { generateRecognition, getAudio, enhancedRecognition } from '../../servic
 const electron = window.require('electron');
 // const {ipcRenderer, shell} = electron;
 // const { dialog } = electron.remote;
-const clipboard = electron.clipboard;
+// const clipboard = electron.clipboard;
 
 const styles = {
   button: {
@@ -84,7 +84,7 @@ class Preview extends React.Component {
     }
     const temp = result.words_result && result.words_result.map(item => item.words).join('');
     // console.log(result, '_result');
-    clipboard.writeText(temp);
+    electron.clipboard.writeText(temp);
 
     /* eslint-disable */
     let myNotification = new Notification('图片识别', {
@@ -156,7 +156,7 @@ class Preview extends React.Component {
             target="_blank"
             label="语音播报"
             labelColor={fullWhite}
-            icon={<Voice color={fullWhite} />}
+            icon={<Hearing color={fullWhite} />}
             backgroundColor="#a4c639"
             onClick={this.palyAudio.bind(this)}
           />

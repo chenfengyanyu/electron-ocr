@@ -52,18 +52,20 @@ export default class DrawerUndockedExample extends React.Component {
                 primaryText="上传图片"
               />
             </Link>
-            <Link to="/list" onClick={this.handleClose.bind(this)}>
+            <Link to="/crop" onClick={this.handleClose.bind(this)}>
               <ListItem
                 leftAvatar={<Avatar icon={<Crop />} backgroundColor={yellow400} />}
                 rightIcon={<ActionInfo />}
                 primaryText="图片裁切"
               />
             </Link>
-            <ListItem
-              leftAvatar={<Avatar icon={<Picture />} backgroundColor={pink400} />}
-              rightIcon={<ActionInfo />}
-              primaryText="图片示例"
-            />
+            <Link to="/list" onClick={this.handleClose.bind(this)}>
+              <ListItem
+                leftAvatar={<Avatar icon={<Picture />} backgroundColor={pink400} />}
+                rightIcon={<ActionInfo />}
+                primaryText="图片示例"
+              />
+            </Link>
             <Link to="/attention" onClick={this.handleClose.bind(this)}>
               <ListItem
                 leftAvatar={<Avatar icon={<Alarm />} backgroundColor={deepPurple400} />}
