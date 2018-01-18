@@ -5,10 +5,11 @@ import { List, ListItem } from 'material-ui/List';
 import ActionInfo from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import Avatar from 'material-ui/Avatar';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
-import ActionVoice from 'material-ui/svg-icons/action/settings-voice';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import { blue500, yellow600, pink300, green400, lightWhite, grey800 } from 'material-ui/styles/colors';
-import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import Picture from 'material-ui/svg-icons/image/camera';
+import Crop from 'material-ui/svg-icons/image/crop-rotate';
+import Alarm from 'material-ui/svg-icons/editor/bubble-chart';
+import Shot from 'material-ui/svg-icons/social/whatshot';
+import { blue400, yellow400, pink400, green400, lightWhite, grey800, deepPurple400 } from 'material-ui/styles/colors';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
@@ -46,33 +47,33 @@ export default class DrawerUndockedExample extends React.Component {
           <List>
             <Link to="/" onClick={this.handleClose.bind(this)}>
               <ListItem
-                leftAvatar={<Avatar icon={<ActionBackup />} backgroundColor={blue500} />}
+                leftAvatar={<Avatar icon={<ActionBackup />} backgroundColor={blue400} />}
                 rightIcon={<ActionInfo />}
                 primaryText="上传图片"
               />
             </Link>
             <Link to="/list" onClick={this.handleClose.bind(this)}>
               <ListItem
-                leftAvatar={<Avatar icon={<EditorInsertChart />} backgroundColor={yellow600} />}
+                leftAvatar={<Avatar icon={<Crop />} backgroundColor={yellow400} />}
                 rightIcon={<ActionInfo />}
-                primaryText="大图裁切"
+                primaryText="图片裁切"
               />
             </Link>
             <ListItem
-              leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
+              leftAvatar={<Avatar icon={<Picture />} backgroundColor={pink400} />}
               rightIcon={<ActionInfo />}
               primaryText="图片示例"
             />
             <Link to="/attention" onClick={this.handleClose.bind(this)}>
               <ListItem
-                leftAvatar={<Avatar icon={<ActionVoice />} backgroundColor={pink300} />}
+                leftAvatar={<Avatar icon={<Alarm />} backgroundColor={deepPurple400} />}
                 rightIcon={<ActionInfo />}
                 primaryText="注意事项"
               />
             </Link>
             <Link to="/about" onClick={this.handleClose.bind(this)}>
               <ListItem
-                leftAvatar={<Avatar icon={<ActionFavorite />} backgroundColor={green400} />}
+                leftAvatar={<Avatar icon={<Shot />} backgroundColor={green400} />}
                 rightIcon={<ActionInfo />}
                 primaryText="关于作者"
               />
