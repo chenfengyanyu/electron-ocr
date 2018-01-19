@@ -34,6 +34,7 @@ const style = {
     display: 'inline-block',
     position: 'absolute',
     opacity: '0.6',
+    display: 'none'
   },
 };
 

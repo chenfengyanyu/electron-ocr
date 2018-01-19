@@ -1,22 +1,33 @@
 import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
+import { lightGreenA700 } from 'material-ui/styles/colors';
+import { Link } from 'react-router-dom';
 
-const style = {
+const styles = {
   view: {
     width: '100%',
     height: '100vh',
     position: 'absolute',
     top: 0,
   },
+  btn: {
+    zIndex: 2,
+  },
 };
 
 const Webview = props => (
   <div>
-    <FloatingActionButton>
-      <ContentAdd />
-    </FloatingActionButton>
-    <webview style={style.view} src={props.url} />
+    <Link to="/" style={styles.btn}>
+      <RefreshIndicator
+        percentage={80}
+        size={40}
+        left={745}
+        top={10}
+        color={lightGreenA700}
+        status="ready"
+      />
+    </Link>
+    <webview style={styles.view} src={props.url} />
   </div>
 );
 
