@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ActionBackup from 'material-ui/svg-icons/action/backup';
 import Dropzone from 'react-dropzone';
 
@@ -23,6 +22,7 @@ const iconStyles = {
 };
 
 class Upload extends React.Component {
+  /* eslint-disable */
   constructor(props) {
     super(props);
     // this.state = { files: [] };

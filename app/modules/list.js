@@ -27,11 +27,55 @@ export default class Demo extends React.Component {
       ],
       currPhoto: 0,
     };
+
+    this.getDataUri = this.getDataUri.bind(this);
+    this.base64ToBlob = this.base64ToBlob.bind(this);
   }
 
-  handleChange(event, value) {
-    this.setState({ currPhoto: value });
+  getDataUri(url) {
+    return new Promise((resolve, reject) => {
+      /* eslint-disable */
+      let image = new Image();
+      image.onload = function() {
+        let canvas = document.createElement('canvas');
+        canvas.width = this.naturalWidth;
+        canvas.height = this.naturalHeight;
+        canvas.getContext('2d').drawImage(this, 0, 0);
+        // Data URI
+        resolve(canvas.toDataURL('image/png'));
+      };
+
+      image.src = url;
+      // console.log(image.src);
+
+      image.onerror = () => {
+        reject(new Error('图片流异常'));
+      };
+    });
   }
+
+  base64ToBlob(b64data, contentType, sliceSize) {
+    sliceSize || (sliceSize = 512);
+    return new Promise((resolve, reject) => {
+      let byteCharacters = atob(b64data);
+      let byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            let slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            let byteNumbers = [];
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers.push(slice.charCodeAt(i));
+            }
+
+            byteArrays.push(new Uint8Array(byteNumbers));
+        }
+        resolve(new Blob(byteArrays, {
+          type: contentType
+        }))
+    })
+  }
+
 
   clickHandler(btn) {
     let photoIndex = btn === NEXT ? this.state.currPhoto + 1 : this.state.currPhoto - 1;
@@ -40,6 +84,23 @@ export default class Demo extends React.Component {
     photoIndex = photoIndex >= this.state.photos.length ? 0 : photoIndex;
 
     this.setState({ currPhoto: photoIndex });
+  }
+
+  async imageChoose(index) {
+    let dataUri = await this.getDataUri(`image/test/${index}.png`);
+    let blob = await this.base64ToBlob(dataUri.split(',')[1], 'image/png');
+    // console.log(dataUri,'dataUri');
+    Object.assign(blob,{ preview: URL.createObjectURL(blob)});
+    console.log(blob,'blob');
+    this.props.history.push({
+      pathname:'/preview',
+      myfile: blob,
+      binary: dataUri
+    });
+  }
+
+  handleChange(event, value) {
+    this.setState({ currPhoto: value });
   }
 
   render() {
@@ -65,7 +126,7 @@ export default class Demo extends React.Component {
         <div className="demo4">
           <Motion style={{ height: spring(currHeight), width: spring(currWidth) }} >
             {container =>
-              <div className="demo4-inner" style={container}>{configs.map((style, i) => <Motion key={i} style={style}>{st => <img className="demo4-photo" alt="" src={`image/test/${i}.png`} style={st} />}</Motion>)}</div>}
+              <div className="demo4-inner" style={container}>{configs.map((style, i) => <Motion key={i} style={style}>{st => <img onClick={this.imageChoose.bind(this, i)} className="photo" alt="" src={`image/test/${i}.png`} style={st} />}</Motion>)}</div>}
           </Motion>
         </div>
         <FloatingActionButton className="previous" backgroundColor="rgba(255, 255, 255, 0.6)" iconStyle={{ fill: '#333' }} mini onClick={this.clickHandler.bind(this, '')}>
@@ -75,7 +136,7 @@ export default class Demo extends React.Component {
           <Next />
         </FloatingActionButton>
         <div className="sliderbox">
-          <Slider className="slider" sliderStyle={{fill:'yellow'}} min={0} max={photos.length - 1} value={currPhoto} step={1} onChange={this.handleChange.bind(this)} />
+          <Slider className="slider" min={0} max={photos.length - 1} value={currPhoto} step={1} onChange={this.handleChange.bind(this)} />
         </div>
       </div>
     );

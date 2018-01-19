@@ -125,7 +125,7 @@ class Preview extends React.Component {
 
   render() {
     let img;
-    if (this.props.location.myfile && this.props.location.myfile.name) {
+    if (this.props.location.myfile) {
       const { preview } = this.state.myfile;
       img = preview;
     } else {
