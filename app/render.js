@@ -25,7 +25,7 @@ import Attention from './modules/attention';
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
   palette: {
-    // primary1Color: white,
+    // primaryColor: white,
   }
 });
 

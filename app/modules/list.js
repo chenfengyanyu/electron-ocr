@@ -1,5 +1,9 @@
 import React from 'react';
 import { Motion, spring } from 'react-motion';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Next from 'material-ui/svg-icons/image/navigate-next';
+import Previous from 'material-ui/svg-icons/image/navigate-before';
+import Slider from 'material-ui/Slider';
 
 const springSettings = {
   stiffness: 170,
@@ -12,18 +16,20 @@ export default class Demo extends React.Component {
     super(props);
     this.state = {
       photos: [
-        [500, 350],
-        [800, 600],
-        [800, 400],
-        [700, 500],
-        [200, 650],
-        [600, 600],
+        [540, 394],
+        [446, 88],
+        [570, 238],
+        [640, 200],
+        [492, 207],
+        [574, 464],
+        [556, 436],
+        [303, 77],
       ],
       currPhoto: 0,
     };
   }
 
-  handleChange({ target: { value } }) {
+  handleChange(event, value) {
     this.setState({ currPhoto: value });
   }
 
@@ -55,21 +61,21 @@ export default class Demo extends React.Component {
     }, leftStartCoords);
 
     return (
-      <div>
-        <button onClick={this.clickHandler.bind(this, '')}>Previous</button>
-        <input
-          type="range"
-          min={0}
-          max={photos.length - 1}
-          value={currPhoto}
-          onChange={this.handleChange.bind(this)}
-        />
-        <button onClick={this.clickHandler.bind(this, NEXT)}>Next</button>
+      <div className="_list">
         <div className="demo4">
           <Motion style={{ height: spring(currHeight), width: spring(currWidth) }} >
             {container =>
               <div className="demo4-inner" style={container}>{configs.map((style, i) => <Motion key={i} style={style}>{st => <img className="demo4-photo" alt="" src={`image/test/${i}.png`} style={st} />}</Motion>)}</div>}
           </Motion>
+        </div>
+        <FloatingActionButton className="previous" backgroundColor="rgba(255, 255, 255, 0.6)" iconStyle={{ fill: '#333' }} mini onClick={this.clickHandler.bind(this, '')}>
+          <Previous />
+        </FloatingActionButton>
+        <FloatingActionButton className="next" backgroundColor="rgba(255, 255, 255, 0.7)" iconStyle={{ fill: '#333' }} mini onClick={this.clickHandler.bind(this, NEXT)}>
+          <Next />
+        </FloatingActionButton>
+        <div className="sliderbox">
+          <Slider className="slider" sliderStyle={{fill:'yellow'}} min={0} max={photos.length - 1} value={currPhoto} step={1} onChange={this.handleChange.bind(this)} />
         </div>
       </div>
     );
