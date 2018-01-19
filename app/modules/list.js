@@ -38,8 +38,7 @@ export default class Demo extends React.Component {
 
   render() {
     const { photos, currPhoto } = this.state;
-    const [currWidth,
-      currHeight] = photos[currPhoto];
+    const [currWidth, currHeight] = photos[currPhoto];
 
     const widths = photos.map(([origW, origH]) => currHeight / origH * origW);
 
