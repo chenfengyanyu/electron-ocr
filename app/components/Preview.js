@@ -12,7 +12,7 @@ import Replay from 'material-ui/svg-icons/av/replay';
 import Text from 'material-ui/svg-icons/av/album';
 // import Howler from 'howler';
 import { fullWhite } from 'material-ui/styles/colors';
-import { generateRecognition, getAudio, enhancedRecognition } from '../../service/api';
+import { generateRecognition, getAudio } from '../../service/api';
 
 /* eslint-disable no-undef */
 const electron = window.require('electron');
@@ -70,16 +70,22 @@ class Preview extends React.Component {
     this.baseOCR();
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   async baseOCR(type) {
     let result = '';
     let notice = '';
-    const base64 = await this.blobToBase64(this.state.myfile);
+    const allBase64 = await this.blobToBase64(this.state.myfile);
+    // 去除 base64 文件头
+    const bash64 = allBase64.replace(/^data:image\/(jpeg|png|gif);base64,/, '');
     // data:image/png;base64,data:image/jpeg;base64,
     if (type === 'enhanced') {
-      result = await enhancedRecognition(base64.replace(/^data:image\/(jpeg|png|gif);base64,/, ''));
+      result = await generateRecognition(bash64, 'general_enhanced');
       notice = '繁体字校准完成，已复制，可直接粘贴！';
     } else {
-      result = await generateRecognition(base64.replace(/^data:image\/(jpeg|png|gif);base64,/, ''));
+      result = await generateRecognition(bash64, 'general_basic');
       notice = '文字识别成功，已复制，可直接粘贴！';
     }
     const temp = result.words_result && result.words_result.map(item => item.words).join('');
@@ -141,9 +147,10 @@ class Preview extends React.Component {
         <CardActions style={styles.button}>
           <RaisedButton
             href="#/"
-            label="重新上传"
+            label="重新选择"
             secondary
             icon={<Replay />}
+            onClick={this.goBack.bind(this)}
           />
           <RaisedButton
             target="_blank"

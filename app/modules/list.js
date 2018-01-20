@@ -90,12 +90,15 @@ export default class Demo extends React.Component {
     let dataUri = await this.getDataUri(`image/test/${index}.png`);
     let blob = await this.base64ToBlob(dataUri.split(',')[1], 'image/png');
     // console.log(dataUri,'dataUri');
-    Object.assign(blob,{ preview: URL.createObjectURL(blob)});
+    Object.assign(blob,{
+      preview: URL.createObjectURL(blob),
+      name: `图片示例：${index}.png`
+    });
     console.log(blob,'blob');
     this.props.history.push({
       pathname:'/preview',
       myfile: blob,
-      binary: dataUri
+      binary: dataUri,
     });
   }
 
