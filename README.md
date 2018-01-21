@@ -15,7 +15,7 @@ OCR(Optical Character Recognition), Electron, Tools
 ![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png)
 
 - 在线演示功能：提供了更多的图片，便于演示效果
-![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc3.png)
+![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc6.gif)
 
 - 繁体字识别：繁体字需要调用付费接口，所以需要单独处理，增加了繁体校准功能
 ![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png)
