@@ -20,6 +20,8 @@ OCR(Optical Character Recognition), Electron, Tools
 - 繁体字识别：繁体字需要调用付费接口，所以需要单独处理，增加了繁体校准功能
 ![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png)
 
+- 大图裁切：为了精准识别，需要将图片化繁为简。
+
 ## 技术方案
 - electron
 - electron-compile
