@@ -2,11 +2,11 @@
 OCR(Optical Character Recognition), Electron, Tools
 
 ## 项目预览
-![demo](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/electron.gif)
+![demo](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/screen.gif)
 
 ## 功能介绍
 - 图片上传：实现拖拽
-![上传页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc0.png)
+<!-- ![上传页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc0.png) -->
 
 - 图片预览：上传完成，直接进入预览页，同时执行文字识别，成功后返回结果，并拷贝入粘贴板，可语音播报
 ![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png)
