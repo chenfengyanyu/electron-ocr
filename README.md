@@ -1,25 +1,6 @@
 # electron-ocr
 OCR(Optical Character Recognition), Electron, Tools
 
-## 项目预览
-![demo](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/electron.gif)
-
-## 功能介绍
-1.图片上传：实现拖拽
-![上传页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc0.png)
-
-2.图片预览：上传完成，直接进入预览页，同时执行文字识别，成功后返回结果，并拷贝入粘贴板，可语音播报
-![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png)
-
-3.菜单页：简单的导航列表，持续扩充
-![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png)
-
-4.在线演示功能：提供了更多的图片，便于演示效果
-![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc6.png)
-
-5.繁体字识别：繁体字需要调用付费接口，所以需要单独处理，增加了繁体校准功能
-![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png)
-
 ## 技术方案
 - electron
 - electron-compile
@@ -35,6 +16,25 @@ OCR(Optical Character Recognition), Electron, Tools
 - cropper
 - Material-UI
 - ...
+
+## 项目预览
+![demo](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/electron.gif)
+
+## 功能介绍
+- 图片上传：实现拖拽
+![上传页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc0.png)
+
+- 图片预览：上传完成，直接进入预览页，同时执行文字识别，成功后返回结果，并拷贝入粘贴板，可语音播报
+![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png)
+
+- 菜单页：简单的导航列表，持续扩充
+![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png)
+
+- 在线演示功能：提供了更多的图片，便于演示效果
+![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc3.png)
+
+- 繁体字识别：繁体字需要调用付费接口，所以需要单独处理，增加了繁体校准功能
+![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png)
 
 ## 使用说明
 1.`clone` 项目
