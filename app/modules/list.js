@@ -16,14 +16,15 @@ export default class Demo extends React.Component {
     super(props);
     this.state = {
       photos: [
-        [540, 394],
+        [560, 280],
         [446, 88],
         [570, 238],
         [640, 200],
         [492, 207],
-        [574, 464],
-        [556, 436],
+        [306, 56],
+        [488, 318],
         [303, 77],
+        [486, 176],
       ],
       currPhoto: 0,
     };

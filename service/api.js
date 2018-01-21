@@ -68,42 +68,6 @@ export async function generateRecognition(param, type) {
   });
 }
 
-// 高精度文字识别
-// export async function accurateRecognition(param) {
-//   const token = await getAccessToken();
-//   return new Promise((resolve, reject) => {
-//     request
-//       .post(`https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic?access_token=${token}`)
-//       .send({ image: param })
-//       .set('Content-Type', 'application/x-www-form-urlencoded')
-//       .then((res) => {
-//         // console.log(res.body);
-//         resolve(res.body);
-//       })
-//       .catch((err) => {
-//         reject(err.message);
-//       });
-//   });
-// }
-
-// 生僻字识别
-// export async function enhancedRecognition(param) {
-//   let token = await getAccessToken();
-//   return new Promise((resolve, reject) => {
-//     request
-//       .post(`https://aip.baidubce.com/rest/2.0/ocr/v1/general_enhanced?access_token=${token}`)
-//       .send({ image: param })
-//       .set('Content-Type', 'application/x-www-form-urlencoded')
-//       .then((res) => {
-//         // console.log(res.body);
-//         resolve(res.body);
-//       })
-//       .catch((err) => {
-//         reject(err.message);
-//       });
-//   });
-// }
-
 // 语音合成
 export async function getAudio(text) {
   const token = await getAudioToken('audio');

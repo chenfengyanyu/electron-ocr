@@ -31,7 +31,7 @@ const chipData = [{
 }, {
   key: 2,
   bg: blue400,
-  label: '繁体字识别需调用付费接口！',
+  label: '手写字体识别准确率偏低！',
   icon: <Three style={styles} />,
 }, {
   key: 3,
