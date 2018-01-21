@@ -7,19 +7,14 @@ OCR(Optical Character Recognition), Electron, Tools
 ## 功能介绍
 - 图片上传：实现拖拽
 <!-- ![上传页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc0.png) -->
-
 - 图片预览：上传完成，直接进入预览页，同时执行文字识别，成功后返回结果，并拷贝入粘贴板，可语音播报
-![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png)
-
+<!-- ![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png) -->
 - 菜单页：简单的导航列表，持续扩充
-![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png)
-
+<!-- ![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png) -->
 - 在线演示功能：提供了更多的图片，便于演示效果
-![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc6.gif)
-
+<!-- ![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc6.gif) -->
 - 繁体字识别：繁体字需要调用付费接口，所以需要单独处理，增加了繁体校准功能
-![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png)
-
+<!-- ![繁体字图片](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc4.png) -->
 - 大图裁切：为了精准识别，需要将图片化繁为简
 
 ## 技术方案
