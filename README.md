@@ -12,7 +12,7 @@ OCR(Optical Character Recognition), Electron, Tools
 ![预览页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc1.png)
 
 3.菜单页：简单的导航列表，持续扩充
-![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc2.png)
+![菜单页](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc5.png)
 
 4.在线演示功能：提供了更多的图片，便于演示效果
 ![图片示例](https://github.com/chenfengyanyu/electron-ocr/blob/master/temp/sc6.png)
